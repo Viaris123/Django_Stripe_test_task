@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>Thanks for your order!</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+  </head>
+  <body>
+    <h1>Thanks for your order!</h1>
+    <p>
+      We appreciate your business!
+      If you have any questions, please email
+      <a href="mailto:orders@example.com">orders@example.com</a>.
+    </p>
+  <a href="{% url 'home' %}"><p>&lt;-Home</p></a>
+  </body>
+</html>

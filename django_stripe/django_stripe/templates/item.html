@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Buy {{product.name}}</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+      <script src="https://js.stripe.com/v3/"></script>
+
+  </head>
+
+  <body>
+    <a href="{% url 'home' %}"><p>&lt;-Home</p></a>
+    <h1>{{product.name}}</h1>
+    <p>{{product.description}}</p>
+    <p>${{product.price}}</p>
+
+    <button id="buy-button">Buy</button>
+    <script type="text/javascript">
+
+      var stripe = Stripe({% autoescape off %} '{{public_key}}' {% endautoescape %});
+
+      var buyButton = document.getElementById('buy-button');
+
+      buyButton.addEventListener('click', function() {
+
+        // Create a new Checkout Session using the server-side endpoint
+
+        // Redirect to Stripe Session Checkout
+
+        fetch('{% url 'buy' product.pk %}', {method: 'GET'})
+
+        .then(response => response.json())
+
+        .then(session => stripe.redirectToCheckout({ sessionId: session.id }))
+
+      });
+
+    </script>
+
+  </body>
+
+</html>

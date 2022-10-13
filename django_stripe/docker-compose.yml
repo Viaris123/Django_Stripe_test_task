@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  web_run:
+    container_name: django_stripe_app
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
