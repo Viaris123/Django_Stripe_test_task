@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Shop</title>
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %} Shop {% endblock %}
+
+{% block content %}
 {% if item_list %}
     <ul>
     {% for item in item_list %}
@@ -16,5 +11,4 @@
 {% else %}
     <p>No items are available.</p>
 {% endif %}
-</body>
-</html>
+{% endblock %}

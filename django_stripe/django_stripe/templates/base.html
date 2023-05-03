@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Shop{% endblock %}</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+</head>
+<body>
+{% if user.is_authenticated %}
+  {{ user.username }} | <a href="{% url 'logout' %}">Log Out</a>
+{% else %}
+  <a href="{% url 'login' %}">Log In</a> | <a href="{% url 'signin' %}">Sign In</a>
+{% endif %}
+{% block content %}
+{% endblock %}
+</body>
+</html>

@@ -11,6 +11,10 @@
   </head>
 
   <body>
+  {% if user.is_authenticated %}
+    {{ user.username }} | <a href="{% url 'logout' %}">Log Out</a>
+  {% else %}
+    <a href="{% url 'login' %}">Log In</a>
     <a href="{% url 'home' %}"><p>&lt;-Home</p></a>
     <h1>{{product.name}}</h1>
     <p>{{product.description}}</p>

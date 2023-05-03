@@ -29,6 +29,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 API_PUBLIC_KEY = env('DJANGO_API_PUBLIC_KEY')
 API_SECRET_KEY = env('DJANGO_API_SECRET_KEY')
+STRIPE_WEBHOOK_KEY = env('STRIPE_WH_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
@@ -39,7 +40,7 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    'django_stripe.apps.DSConfig',
+    'django_stripe.apps.DjStConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -131,3 +132,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "home"
