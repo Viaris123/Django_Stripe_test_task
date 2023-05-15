@@ -15,7 +15,7 @@ class ItemAdmin(admin.ModelAdmin):
         try:
             new_product = stripe.Product.create(name=request.POST['name'],
                                                 description=request.POST['description'],
-                                                default_price_data={'unit_amount': request.POST['price'],
+                                                default_price_data={'unit_amount': request.POST['price'] * 100,
                                                                     'currency': 'usd'})
         except Exception as e:
             raise e

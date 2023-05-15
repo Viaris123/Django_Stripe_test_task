@@ -21,8 +21,7 @@ for item in items:
             name=item['name'],
             description=item['description'],
             price=price['unit_amount']/10,
-            prod_id=item['id'],
-            price_id=price['id'])
+            prod_id=item['id'])
         obj.save()
 if DEBUG:
     print(Item.objects.all())
