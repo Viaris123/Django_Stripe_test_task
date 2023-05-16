@@ -7,6 +7,7 @@ class Item(models.Model):
     description = models.CharField(max_length=255)
     price = models.IntegerField()
     prod_id = models.CharField(max_length=255)
+    img_url = models.CharField(max_length=300, default=None)
 
     class Meta:
         ordering = ('name', 'price')

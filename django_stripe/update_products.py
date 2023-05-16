@@ -13,17 +13,19 @@ from django_stripe.models import Item
 
 stripe.api_key = API_SECRET_KEY
 
-items = stripe.Product.list()
+items = stripe.Product.search(query="active:'true'",)
+
 for item in items:
-    if item['active']:
-        price = stripe.Price.retrieve(item['default_price'])
-        obj, created = Item.objects.update_or_create(
-            name=item['name'],
-            description=item['description'],
-            price=price['unit_amount']/10,
-            prod_id=item['id'])
-        obj.save()
+    price = stripe.Price.retrieve(item["default_price"])["unit_amount"]/100
+    obj, created = Item.objects.update_or_create(name=item['name'],
+                                                 description=item['description'],
+                                                 price=price,
+                                                 prod_id=item['id'],
+                                                 img_url=item['images'])
+
 if DEBUG:
+    # print(items)
     print(Item.objects.all())
+
 
 
